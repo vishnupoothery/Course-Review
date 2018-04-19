@@ -17,6 +17,22 @@ if( isset($_SESSION['user_id']) ){
         $user = $results;
     }
 
+    $record = $conn->prepare('SELECT dept,code,title,type,faculty,motivation,outcome,pre,rating,faculty_feedback,assg_diff,exam_diff,misc_feedback,diff,grading,evaluation,reference,misc,stu_id FROM users WHERE id = :cid');
+    $record->bindParam(':cid', $_GET['id']);
+    $record->execute();
+    $result = $record->fetch(PDO::FETCH_ASSOC);
+
+    $data = NULL;
+
+    if( count($result) > 0){
+        $data = $result;
+        echo $data['name'];
+    }
+    else
+    {
+        echo 'no';
+    }
+
 }
 
 ?>
@@ -35,7 +51,7 @@ if( isset($_SESSION['user_id']) ){
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">AAC NITC</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="index.php" class="brand-logo">AAC NITC</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Give Feedback</a></li>
                     <li><a href="#">Contact US</a></li>
@@ -67,26 +83,17 @@ if( isset($_SESSION['user_id']) ){
 
                 <h3 class="center-align hide-on-small-only">Course Review NITC</h3>
                 <h5 class="center-align hide-on-med-and-up">Course Review NITC</h5>
-<!--
+
                 <ul class="collection with-header">
-                    <li class="collection-header"><h4>Dept Name</h4></li>
+                    <li class="collection-header"><h4><?php echo $data['code'] ?></h4></li>
                     <li class="collection-item hoverable">code - Course name</li>
                     <li class="collection-item">code - Course name</li>
                     <li class="collection-item">code - Course name</li>
                     <li class="collection-item">code - Course name</li>
                 </ul>
-                -->
 
-                <ul class="collection with-header">
-                    <li class="collection-header"><h4>Dept Name</h4></li>
-                    <?php 
 
-                    foreach($conn->query('SELECT id,code,title FROM review') as $row){
-                        echo '<a href="view.php?id='.$row['id'].'"><li class="collection-item hoverable">'.$row['code'].' - '.$row['title'].'</li></a>';
-                    }
 
-                    ?>
-                </ul>
             </div>
         </div>
 
