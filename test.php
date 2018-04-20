@@ -20,6 +20,7 @@ if( isset($_SESSION['user_id']) ){
 
 
 }
+
 $record = $conn->prepare('SELECT dept,code,title,type,faculty,motivation,outcome,pre,rating,faculty_feedback,assg_diff,exam_diff,misc_feedback,diff,grading,evaluation,reference,misc,stu_id FROM review WHERE id = :cid');
 $record->bindParam(':cid', $_GET['id']);
 $record->execute();
@@ -29,11 +30,12 @@ $data = NULL;
 
 if( count($result) > 0){
     $data = $result;
+    echo $data['title'];
 }
-
-$type = array("Core","Local Elective","Global Elective");
-$dept = array("Computer Science");
-$grading = array("Absolute","Relative");    
+else
+{
+    echo 'no';
+}
 
 ?>
 
@@ -85,39 +87,11 @@ $grading = array("Absolute","Relative");
                 <h5 class="center-align hide-on-med-and-up">Course Review NITC</h5>
 
                 <ul class="collection with-header">
-                    <li class="collection-header"><h4><?php echo $data['code'].' : '.$data['title'] ?></h4></li>
-                    <li class="collection-item"><strong>Course type</strong><br><?php echo $type[$data['type']]; ?>
-                        <br><br>
-                        <strong>Department Offering Course : </strong><br><?php echo $dept[$data['dept']]; ?>
-                        <br><br>
-                        <strong>Faculty who took the course : </strong><br><?php echo $data['faculty']; ?>
-                        <br><br>
-                        <strong>Motivation to Take this course : </strong><br><?php echo $data['motivation']; ?>
-                        <br><br>
-                        <strong>Course Outcomes : </strong><br><?php echo $data['outcome']; ?>
-                        <br><br>
-                        <strong>Prerequisites : </strong><br><?php echo $data['pre']; ?>
-                        <br><br>
-                        <strong>Rating on lecture : </strong><br><?php echo $data['rating']; ?>
-                        <br><br>
-                        <strong>Feedback on lectures and faculty : </strong><br><?php echo $data['faculty_feedback']; ?>
-                        <br><br>
-                        <strong>Tutorial/Assignment Difficulty : </strong><br><?php echo $data['assg_diff']; ?>
-                        <br><br>
-                        <strong>Exam Difficulty : </strong><br><?php echo $data['exam_diff']; ?>
-                        <br><br>
-                        <strong>Any other feedback or remarks on tutorials, assignments and exams : </strong><br><?php echo $data['misc_feedback']; ?>
-                        <br><br>
-                        <strong>Overall Difficulty : </strong><br><?php echo $data['diff']; ?>
-                        <br><br>
-                        <strong>Grading System followed : </strong><br><?php echo $grading[$data['grading']]; ?>
-                        <br><br>
-                        <strong>How is the evaluation : </strong><br><?php echo $data['evaluation']; ?>
-                        <br><br>
-                        <strong>Study Materials and References : </strong><br><?php echo $data['reference']; ?>
-                        <br><br>
-                        <strong>Any other comments on the course : </strong><br><?php echo $data['misc']; ?>
-                    </li>
+                    <li class="collection-header"><h4><?php echo $data['code'] ?></h4></li>
+                    <li class="collection-item hoverable">code - Course name</li>
+                    <li class="collection-item">code - Course name</li>
+                    <li class="collection-item">code - Course name</li>
+                    <li class="collection-item">code - Course name</li>
                 </ul>
 
 

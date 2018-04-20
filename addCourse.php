@@ -186,10 +186,10 @@ endif;
                 <div class="form-group">
                     <label>Grading System followed</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" class="form-control" name="grading" value="1"><label class="form-check-label">Absolute</label>
+                        <input class="form-check-input" type="radio" class="form-control" name="grading" value="0"><label class="form-check-label">Absolute</label>
                     </div><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" class="form-control" name="grading" value="2"><label class="form-check-label">Relative</label>
+                        <input class="form-check-input" type="radio" class="form-control" name="grading" value="1"><label class="form-check-label">Relative</label>
                     </div>
                 </div>
 
