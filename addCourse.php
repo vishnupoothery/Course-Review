@@ -9,7 +9,7 @@ $message = '';
 if(!empty($_POST['code'])):
 
 // Enter the new user in the database
-$sql = "INSERT INTO review (dept,code,title,type,faculty,motivation,outcome,pre,rating,faculty_feedback,assg_diff,exam_diff,misc_feedback,diff,grading,evaluation,reference,misc,stu_id) VALUES (:dept,:code,:title,:type,:faculty,:motivation,:outcome,:pre,:rating,:faculty_feedback,:assg_diff,:exam_diff,:misc_feedback,:diff,:grading,:evaluation,:reference,:misc,:stu_id)";
+$sql = "INSERT INTO review (dept,code,title,type,faculty,motivation,outcome,pre,rating,faculty_feedback,assg_diff,exam_diff,misc_feedback,diff,grading,evaluation,reference,misc,stu_id,up_rate,down_rate) VALUES (:dept,:code,:title,:type,:faculty,:motivation,:outcome,:pre,:rating,:faculty_feedback,:assg_diff,:exam_diff,:misc_feedback,:diff,:grading,:evaluation,:reference,:misc,:stu_id,0,0)";
 $stmt = $conn->prepare($sql);
 
 $stmt->bindParam(':dept', $_POST['dept']);
